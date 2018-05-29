@@ -23,9 +23,10 @@ var People = /** @class */ (function () {
 }());
 var Singer = /** @class */ (function (_super) {
     __extends(Singer, _super);
-    function Singer(name) {
+    function Singer(name, age) {
         var _this = _super.call(this, name) || this;
         _this.name = name;
+        _this.age = age;
         return _this;
     }
     Singer.prototype.sing = function (song) {
@@ -34,12 +35,14 @@ var Singer = /** @class */ (function (_super) {
     return Singer;
 }(People));
 People.sayHelloWorld();
+Singer.sayHelloWorld();
 var Alex = new People('Alex');
 console.log(Alex.greeting());
-Singer.sayHelloWorld();
-var Ai = new Singer('Ai');
+var Ai = new Singer('Ai', 18);
 console.log(Ai.greeting());
 console.log(Ai.sing('ABC'));
+// instanceof
+console.log('------instanceof------');
 // Alex 為 People 的物件 ＝> true
 console.log("Alex instanceof People: " + (Alex instanceof People));
 // Alex 為 Singer 的物件 ＝> false
@@ -50,3 +53,14 @@ console.log("Ai instanceof Singer: " + (Ai instanceof Singer));
 console.log("Ai instanceof People: " + (Ai instanceof People));
 // Singer class 繼承 People class => true
 console.log("Singer extends People: " + (Singer.prototype instanceof People));
+// hasOwnProperty
+console.log('------hasOwnProperty------');
+// true
+console.log("Alex hasOwnProperty name: " + Alex.hasOwnProperty('name'));
+// false 因為 greeting 繼承 prototype
+console.log("Alex hasOwnProperty greeting: " + Alex.hasOwnProperty('greeting'));
+console.log("Alex hasOwnProperty age: " + Alex.hasOwnProperty('age'));
+// true
+console.log("Ai hasOwnProperty name: " + Ai.hasOwnProperty('name'));
+// true
+console.log("Ai hasOwnProperty age: " + Ai.hasOwnProperty('age'));
